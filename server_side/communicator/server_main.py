@@ -1,5 +1,17 @@
 import socket
-from collections import deque
+from dataclasses import dataclass
+
+class Map:
+    def update_position(self):
+
+@dataclass
+class Package:
+    cl_id: int
+    cl_pos_x: int
+    cl_pos_y: int
+
+class Client:
+
 
 HOST = "127.0.0.1"  # Стандартный интерфейс обратной петли (localhost)
 PORT = 65432        # Порт для прослушивания (не привилегированные порты > 1023)
@@ -25,8 +37,9 @@ def start_server():
             print(f'connection from {client_address}')
 
             while True:
-                data = connection.recv(16)
+                data = connection.recv(1024)
                 print(f'received "{data}"')
+
                 if data:
                     print('processing data')
                 else:
